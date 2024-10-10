@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.fee_payment_nfa.copy_of_receipt
     - field.field.node.fee_payment_nfa.field_date_of_nfa_receipt
     - field.field.node.fee_payment_nfa.field_farmer_name_ref
     - field.field.node.fee_payment_nfa.field_nfa_receipt_number
@@ -28,6 +29,7 @@ content:
     weight: 100
     region: content
 hidden:
+  copy_of_receipt: true
   field_date_of_nfa_receipt: true
   field_farmer_name_ref: true
   field_nfa_receipt_number: true

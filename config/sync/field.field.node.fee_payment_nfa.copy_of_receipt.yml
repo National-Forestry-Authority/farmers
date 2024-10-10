@@ -1,0 +1,27 @@
+uuid: 2d4f7a35-6fc5-4b6a-b450-319124906acd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.copy_of_receipt
+    - node.type.fee_payment_nfa
+  module:
+    - file
+id: node.fee_payment_nfa.copy_of_receipt
+field_name: copy_of_receipt
+entity_type: node
+bundle: fee_payment_nfa
+label: 'Copy of receipt'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

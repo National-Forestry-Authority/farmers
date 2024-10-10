@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.fee_payment_nfa.copy_of_receipt
     - field.field.node.fee_payment_nfa.field_date_of_nfa_receipt
     - field.field.node.fee_payment_nfa.field_farmer_name_ref
     - field.field.node.fee_payment_nfa.field_nfa_receipt_number
@@ -16,12 +17,21 @@ dependencies:
     - node.type.fee_payment_nfa
   module:
     - datetime
+    - file
     - user
 id: node.fee_payment_nfa.default
 targetEntityType: node
 bundle: fee_payment_nfa
 mode: default
 content:
+  copy_of_receipt:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
   field_date_of_nfa_receipt:
     type: datetime_default
     label: above

@@ -44,6 +44,7 @@
             <th>Offer/License</th>
             <th>NFA receipt date</th>
             <th>NFA receipt number</th>
+            <th>Payment receipt</th>
             <th>URA PRN date</th>
             <th>URA PRN</th>
             <th>Payment type</th>
@@ -62,6 +63,11 @@
               <td>{{ fee_payment.area_title}}</td>
               <td>{{ fee_payment.nfa_receipt_date}}</td>
               <td>{{ fee_payment.nfa_receipt_number}}</td>
+              {% if fee_payment.payment_receipt is empty %}
+                <td>NA</td>
+              {% else %}
+                <td><a href={{ fee_payment.payment_receipt}} target="_blank">Click to open</a></td>
+              {% endif %}
               <td>{{ fee_payment.ura_prn_date }}</td>
               <td>{{ fee_payment.ura_prn }}</td>
               <td>{{ fee_payment.payment_type}}</td>

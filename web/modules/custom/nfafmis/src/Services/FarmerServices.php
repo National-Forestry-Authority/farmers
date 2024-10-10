@@ -196,6 +196,14 @@ class FarmerServices {
       $nids = array_values($payment_nids);
       $payments = $this->entityTypeManager->getStorage('node')->loadMultiple($nids);
       foreach ($payments as $key => $payment) {
+        foreach ($payment->get('copy_of_receipt') as $receipt) {
+          $file = $receipt->entity;
+          if ($file) {
+            $file_uri = $file->getFileUri();
+            $file_download_uri = $this->fileUrlGenerator->generateAbsoluteString($file_uri);
+            $data_array[$key]['payment_receipt'] = $file_download_uri;
+          }
+        }
         $data_array[$key]['area_title'] = $area->getTitle();
         $data_array[$key]['payment_type'] = $payment->get('field_payment_type')->entity->getName();
         $data_array[$key]['nfa_receipt_date'] = $payment->get('field_date_of_nfa_receipt')->value;

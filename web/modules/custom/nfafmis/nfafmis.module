@@ -187,6 +187,10 @@ function nfafmis_form_alter(array &$form, FormStateInterface $form_state, $form_
 
   // Prepare fee_payment_nfa add edit form.
   if ($form_id == 'node_fee_payment_nfa_form' || $form_id == 'node_fee_payment_nfa_edit_form') {
+    // If the form altered is triggered by ajax, we don't want to do anything.
+    if ($form_state->getTriggeringElement()) {
+      return;
+    }
     $query_params = $nfafmis_service_utility->getQueryParams();
     if (!empty($query_params) && isset($query_params['offer_licence_id'])) {
       $form['field_offer_id_ref']['widget'][0]['#disabled'] = TRUE;
